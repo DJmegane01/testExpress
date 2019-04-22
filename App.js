@@ -4,7 +4,7 @@ const log4js = require("log4js");
 //log4js
 log4js.configure({
 	appenders:{
-		stdout:{	
+		stdout:{
 			type:'stdout'
 		},
 		system:{
@@ -52,8 +52,11 @@ app.get("/test",function(req,res){
 });
 
 app.get("/ejs-test",function(req,res,next){
-	app.set('view engine','ejs');
+	setViewEngine();
 	accLog.info("access ejs");
 	res.render("index",{});
 });
 
+function setViewEngine(){
+	app.set('view engine','ejs');
+}
